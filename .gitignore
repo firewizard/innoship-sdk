@@ -1,0 +1,19 @@
+#ignore general stuff
+error_log
+.svn
+Thumbs.db
+*.disabled
+*.dis
+*.log
+*.bak
+.DS_Store
+.src
+.ftpquota
+node_modules
+
+#ignore IDE specific
+/.settings
+/.buildpath
+/.project
+/.idea
+

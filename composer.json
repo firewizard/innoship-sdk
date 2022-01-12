@@ -1,0 +1,21 @@
+{
+    "name": "firewizard/innoship-sdk",
+    "description": "Consumer SDK for Innoship API",
+    "authors": [
+        {
+            "name": "Cristian Nicolescu",
+            "email": "cristi@mandagreen.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Innoship\\": "src/Innoship/"
+        }
+    }
+}
