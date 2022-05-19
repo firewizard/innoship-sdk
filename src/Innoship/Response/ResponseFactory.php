@@ -7,7 +7,7 @@ class ResponseFactory
     public static function make($responseBody, $statusCode, $error, $headers = []): Contract
     {
         if ($statusCode == 401) {
-            return new Unauthorized();
+            return new Unauthorized('Unauthorized', 'Unauthorized');
         }
 
         if ($statusCode == 400) {
@@ -17,14 +17,14 @@ class ResponseFactory
 //           }
 
             if (static::shouldDecode($headers['content-type'] ?? [])) {
-                $responseBody = json_decode($responseBody, true);
+                $decodedBody = json_decode($responseBody, true);
             }
 
-            $error = empty($responseBody['errors'])
+            $error = empty($decodedBody['errors'])
                 ? 'Unknown error'
-                : implode(', ', array_column($responseBody['errors'], 'message'));
+                : implode(', ', array_column($decodedBody['errors'], 'message'));
 
-            return new BadRequest($error);
+            return new BadRequest($error, $responseBody);
         }
 
         if ($statusCode == 200 || $statusCode == 201) {
@@ -35,7 +35,7 @@ class ResponseFactory
             return new Response($responseBody);
         }
 
-        return new BadRequest("Error {$statusCode}");
+        return new BadRequest("Error {$statusCode}", $responseBody);
     }
 
     protected static function shouldDecode(array $contentTypes)

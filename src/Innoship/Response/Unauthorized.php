@@ -1,15 +1,6 @@
 <?php
 namespace Innoship\Response;
 
-class Unauthorized implements Contract
+class Unauthorized extends Contract
 {
-    public function getContent()
-    {
-        return 'Unauthorized';
-    }
-
-    public function isSuccessful(): bool
-    {
-        return false;
-    }
 }
