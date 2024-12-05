@@ -27,6 +27,9 @@ use Innoship\Traits\Setter;
  * @method GetFixedLocations setRestrictionSizeWidth($value)
  * @method GetFixedLocations setRestrictionSizeLength($value)
  * @method GetFixedLocations setExternalLocationId($value)
+ * @method GetFixedLocations setLat($value)
+ * @method GetFixedLocations setLng($value)
+ * @method GetFixedLocations setRadius($value)
  */
 class GetFixedLocations implements Contract
 {
@@ -46,6 +49,9 @@ class GetFixedLocations implements Contract
     protected $restrictionSizeWidth;
     protected $restrictionSizeLength;
     protected $externalLocationId;
+    protected $lat;
+    protected $lng;
+    protected $radius;
 
     public function data(): array
     {
@@ -61,6 +67,9 @@ class GetFixedLocations implements Contract
             'RestrictionSizeWidth' => $this->restrictionSizeWidth,
             'RestrictionSizeLength' => $this->restrictionSizeLength,
             'ExternalLocationId' => $this->externalLocationId,
+            'Latitude' => $this->lat,
+            'Longitude' => $this->lng,
+            'Radius' => $this->radius,
         ]);
     }
 }
